@@ -1,0 +1,31 @@
+{% extends 'ConnectToHealMain/base.html' %}
+{% load static %}
+{% block content %}
+<h1>List of Sessions</h1>
+{% for session in sessions %}
+<br>
+<form method="POST">
+    {% csrf_token %}
+    <input type="number" name="index" style="visibility:hidden" value="{{session.pk}}">
+    <article class="media content-section">
+        <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2 " href="#">{{ session.therapistName }}</a>
+        </div>
+        <h2><a class="article-title" href="#">{{ session.date|date:"F d, Y" }}</a></h2>
+        <div>
+        <p class="article-content">From Time: {{ session.fromTime|time:'H:i' }}<br><br>To Time: {{ session.toTime|time:'H:i'}}<br>
+        </p>
+        {% if session.sessionstatus %}
+        <p class="btn btn-success">Status : Approved</p> 
+        {% else %}
+        <p class="btn btn-danger">Status : Not Approved</p> 
+        <button class="btn btn-info" style="float:right">Approve this session</button>
+        {% endif %}
+        
+    </div>
+    </article>
+</form>
+{% endfor %}
+
+{% endblock %}

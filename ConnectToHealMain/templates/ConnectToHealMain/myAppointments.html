@@ -1,0 +1,25 @@
+{% extends 'ConnectToHealMain/base.html' %}
+{% load static %}
+{% block content %}
+<h1>My Appointments</h1>
+{% for appointment in appointments %}
+<br>
+    <article class="media content-section">
+        <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2" href="#">{{ appointment.therapistName }}</a>
+        </div>
+        <h2><a class="article-title" href="#">{{ appointment.date|date:"F d, Y" }}</a></h2>
+        <div>
+        <p class="article-content">From Time: {{ appointment.fromTime|time:'H:i' }}<br><br>To Time: {{ appointment.toTime|time:'H:i'}}<br>
+        </p>
+        {% if appointment.sessionstatus %}
+        <p style="float:right">Status: <button class="btn btn-success">Approved</button></p>
+        {% else %}
+        <p style="float:right">Status: <button class="btn btn-danger">Not Approved</button></p>
+        {% endif %}    
+    </div>
+    </article>
+{% endfor %}
+
+{% endblock %}

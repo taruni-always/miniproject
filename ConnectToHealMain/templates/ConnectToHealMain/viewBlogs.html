@@ -1,0 +1,29 @@
+{% extends 'ConnectToHealMain/base.html' %}
+{% load static %}
+{% block content %}
+{% for blog in blogs %}
+    <div class="container-fluid">    
+            <div class="row">
+                {% if forloop.counter|divisibleby:2 %}
+                    <img class="col-7" src="{{ blog.cover.url }}"/>
+                    <div class="col-5 justify-content-center align-self-center">
+                        <h2>{{ blog.title }}</h2>
+                        <p> {{ blog.date_published }} </p>
+                        <p> Author: {{ blog.author }} </p>
+                        <p class="lead mb-0">{{ blog.blog }}</p>
+                        <a class = "btn btn-outline-primary" href = "{{blog.link}}">Read More </a>
+                    </div>
+                {% else %}
+                <div class="col-7 justify-content-center align-self-center">'
+                    <h2>{{ blog.title }}</h2>
+                    <p> {{ blog.date_published }} </p>
+                    <p> Author: {{ blog.author }} </p>
+                    <p class="lead mb-0">{{ blog.blog }}</p>
+                    <a class = "btn btn-outline-primary" href = "{{blog.link}}">Read More </a>
+                </div>
+                <img class="col-5" src="{{ blog.cover.url }}"/>
+                {% endif %}
+            </div>
+        </div>
+{% endfor %}
+{% endblock %}

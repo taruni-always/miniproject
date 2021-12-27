@@ -1,0 +1,17 @@
+{% extends 'ConnectToHealMain/base.html' %}
+{% load static %}
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <fieldset class="form-group">
+        <center>{{ form.label }} <br> {{form.as_p}}  </center>
+    </fieldset>
+    <center><div class="form-group">
+        <button class="btn btn-outline-info" id = "submitbutton">Submit</button>
+    </div></center>
+</form>
+{% for forum in forums reversed %}
+<hr>
+<p style="padding-left:10px"> {{forum.info}} </p>
+{% endfor %}
+{% endblock %}
