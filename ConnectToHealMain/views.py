@@ -46,7 +46,7 @@ def detailAppointment(request):
             appointment.therapistName = therapistName
             appointment.Uploader_info = request.user
             appointment.save()
-            messages.success(request,"Appointment for {0} booked successfully! Thank you{1}".format(therapistName,request.user.userprofile.username))
+            messages.success(request,"Appointment for {0} booked successfully! Thank you {1}".format(therapistName,request.user.userprofile.username))
             return redirect('ConnectToHeal-home')
         else:
             messages.error(request,"Failed to book appointment")

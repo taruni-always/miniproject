@@ -3,16 +3,20 @@
 {% block content %}
 {% for therapist in therapists %}
 <br>
-
+<style>
+    .content-section:hover{
+        background-color:#D96CD9;
+      }
+    </style>
 <form method="POST">
     {% csrf_token %} 
 <input type="text" name="therapistName" value="{{ therapist.username }}" style="visibility:hidden"/>
     <article class="media content-section">
         <div class="media-body">
         <div class="article-metadata">
-            <a class="mr-2" href="#">{{ therapist.username }}</a>
+            <a class="mr-2" style="font-size:25px">{{ therapist.username }}</a>
         </div>
-        <h2><a class="article-title" href="#">{{ therapist.email }}</a></h2>
+        <h2><a class="article-title" >{{ therapist.email }}</a></h2>
         <div>
             <button style="float: right; margin-right: 10px;" class="btn btn-primary" name="bookAppointment">
             Book Appointment</button>

@@ -8,25 +8,36 @@
 
 <style type="text/css">
   .card {
-    background-color: #fff;
+    background-color:#fff;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 300px;
   margin: auto;
   text-align: center;
+  
+  }
+  .card:hover{
+    background-color:#D96CD9;
+  }
+  .body {
+    background-image:url('media/home.jpg');
+  }
+  .body {
+    background-color:#AFE5C5;
+  }
 }
 </style>
-
-<div class="row">
+<div >
+<div class="row" style = "background-image:url('media/home.jpg');">
   <div class="col">
-  <div class="card">
+  <div class="card" >
   
   <h1>Taruni</h1>
   <p class="title">1602-19-737-120</p>
   <p>Vasavi College of Engineering</p>
  
   <a href="#"><i class="fa fa-linkedin"></i></a>
-  
-  <p><button class="btn btn-outline-primary">Contact</button></p>
+  <a href="https://github.com/taruni-always/"><span>GitHub</span> </a><br>
+  <!--<p><button class="btn btn-outline-primary" href= "https://github.com/taruni-always">Contact</button></p>-->
 </div>
 </div>
 <div class="col">
@@ -38,8 +49,7 @@
 
 <a href="#"><i class="fa fa-linkedin"></i></a>
 
-<p><button class="btn btn-outline-primary">Contact</button></p>
-</div>
+<a href="https://github.com/harshith28"><span>GitHub</span> </a><br></div>
 </div>
 <div class="col">
 <div class="card">
@@ -50,9 +60,9 @@
 
 <a href="#"><i class="fa fa-linkedin"></i></a>
 
-<p><button class="btn btn-outline-primary">Contact</button></p>
+<a href="https://github.com/ANTHATIKARTHIK"><span>GitHub</span> </a><br></div>
 </div>
 </div>
-</div>
+<div style = "background-image:url('media/home.jpg')"></div>
 
 {% endblock %}

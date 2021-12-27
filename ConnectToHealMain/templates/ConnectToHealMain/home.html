@@ -1,6 +1,24 @@
 {% extends 'ConnectToHealMain/base.html' %}
 {% load static %}
 {% block content %}
-<h1>Connect to Heal</h1>
+<br>
+<br>
 
+<br>
+{% if  user.is_authenticated %}
+<center><h1 style = "font-size: 100px;"> {{user.username}} </h1></center>
+
+{% else %}
+<p>
+    <div style = "color: black;"></div>Mental health is the most neglected health problem worldwide. We hear many cases where people suffer from
+                  depression and anxiety due to various reasons like work-related stress. Statistically speaking, approximately 280 million
+                  people in the world have depression. Though many people stigmatize it, mental illness is a very serious problem that
+                  needs to be addressed. If you suffer from a mental illness, the common conception is that there’s something wrong with
+                  you, as a person, as a human being. This needs to stop. Although we see a drastic change in the number of people
+                  considering mental health as a serious issue, we still have a long way to go. Untreated mental illnesses are also
+                  becoming increasingly common across the globe.  You get to choose your preferred therapist and share anything you want with
+                  them. Not comfortable sharing your personal information to a stranger on the internet? We got you! You can book the
+                  sessions anonymously without revealing your identity. This is us, doing our part in reducing the devastating repercussions
+                  of untreated mental illnesses, because as they say, "Change doesn't happen overnight" !</P>
+                  {% endif %}
 {% endblock %}
