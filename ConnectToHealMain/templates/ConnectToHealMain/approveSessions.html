@@ -10,9 +10,10 @@
     <article class="media content-section">
         <div class="media-body">
         <div class="article-metadata">
-            <a class="mr-2 " href="#">{{ session.therapistName }}</a>
+            <a class="article-title" >{{ session.date|date:"F d, Y" }}</a>
         </div>
-        <h2><a class="article-title" href="#">{{ session.date|date:"F d, Y" }}</a></h2>
+        
+        <h2><a class="mr-2 " >{{ session.therapistName }} and {{ session.user}} </a> </h2>
         <div>
         <p class="article-content">From Time: {{ session.fromTime|time:'H:i' }}<br><br>To Time: {{ session.toTime|time:'H:i'}}<br>
         </p>

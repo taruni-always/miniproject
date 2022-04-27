@@ -36,7 +36,7 @@ class BookAppointmentModel(models.Model):
     fromTime = models.TimeField()
     toTime = models.TimeField()
     sessionstatus = models.BooleanField(default=False)
-    
+    sessionLink = models.CharField(max_length = 250, default = "#")
     def __str__(self):
            return self.user.username + " - " + self.therapistName
      

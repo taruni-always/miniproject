@@ -7,11 +7,11 @@
     <article class="media content-section">
         <div class="media-body">
         <div class="article-metadata">
-            <a class="mr-2" href="#">{{ appointment.therapistName }}</a>
+            <a class="mr-2" >Therapist: {{ appointment.therapistName }}</a>
         </div>
-        <h2><a class="article-title" href="#">{{ appointment.date|date:"F d, Y" }}</a></h2>
+        <h2><a class="article-title" >{{ appointment.date|date:"F d, Y" }}</a></h2>
         <div>
-        <p class="article-content">From Time: {{ appointment.fromTime|time:'H:i' }}<br><br>To Time: {{ appointment.toTime|time:'H:i'}}<br>
+        <br><p class="article-content">From Time: {{ appointment.fromTime|time:'H:i' }}<br><br>To Time: {{ appointment.toTime|time:'H:i'}}
         </p>
         {% if appointment.sessionstatus %}
         <p style="float:right">Status: <button class="btn btn-success">Approved</button></p>
