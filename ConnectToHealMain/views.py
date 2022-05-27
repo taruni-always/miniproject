@@ -17,6 +17,7 @@ def viewBlogs(request):
     blogs = BlogModel.objects.all()
     return render(request,"ConnectToHealMain/viewBlogs.html",{'blogs':blogs})
 
+'''
 def ventingSpace(request):
     form = DiscussionForm()
     if request.method == 'POST':
@@ -25,6 +26,7 @@ def ventingSpace(request):
             form.save()
     forums = DiscussionModel.objects.all()
     return render(request, 'ConnectToHealMain/ventingSpace.html', {'form': form,'forums':forums})
+'''
 
 @login_required
 def viewTherapists(request):

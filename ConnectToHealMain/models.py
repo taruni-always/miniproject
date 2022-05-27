@@ -14,10 +14,12 @@ class BlogModel(models.Model):
     def __str__(self):
         return self.title
     
+'''
 class DiscussionModel(models.Model):
     info = models.TextField(max_length = 255)
     def _str_(self):
         return DiscussionModel.objects.count() + 1
+'''
 
 class TherapistModel(models.Model):
     username = models.CharField(max_length = 50, blank = True, null = True, unique = True)

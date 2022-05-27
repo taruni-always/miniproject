@@ -5,10 +5,12 @@ from django.contrib.admin.widgets import AdminTimeWidget
 from django.forms import widgets
 from .models import *
 
+'''
 class DiscussionForm(forms.ModelForm):
     class Meta:
         model = DiscussionModel
         fields = ['info']
+'''
 
 class DateInput(forms.DateInput):
     input_type = 'date'
