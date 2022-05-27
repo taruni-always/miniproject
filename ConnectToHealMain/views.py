@@ -29,9 +29,11 @@ def ventingSpace(request):
 @login_required
 def viewTherapists(request):
     therapists = TherapistModel.objects.all()
-    if request.method =='POST':
+    if "bookAppointment" in request.POST:
         therapist = TherapistModel.objects.get(username=request.POST.get('therapistName'))
         return redirect("/detailAppointment/?username="+therapist.username)
+    if "writeReview" in request.POST:
+        return redirect("https://18773.gradio.app/")
     return render(request,"ConnectToHealMain/viewTherapists.html",{'therapists':therapists})
 
 @login_required
