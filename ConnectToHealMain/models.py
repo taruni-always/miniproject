@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.timezone import now
+
 
 class BlogModel(models.Model):
     title = models.CharField(max_length = 255)
@@ -40,3 +42,18 @@ class BookAppointmentModel(models.Model):
     def __str__(self):
            return self.user.username + " - " + self.therapistName
      
+class Post(models.Model):
+    user1 = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    post_content = models.CharField(max_length=5000)
+    post_id = models.AutoField
+    timestamp= models.DateTimeField(default=now)
+    def __str__(self):
+        return str(self.user1) + " - " + str(self.post_content) + " - "+str(self.post_id)+ " - "+str(self.timestamp)
+
+class Replie(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    reply_content = models.CharField(max_length=5000) 
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, default='')
+    timestamp= models.DateTimeField(default=now)
+    def __str__(self):
+        return str(self.user) + " - " + str(self.reply_content) + " - "+str(self.post) + " - "+str(self.timestamp) 

@@ -1,0 +1,69 @@
+{% extends 'ConnectToHealMain/base.html' %}
+{% load static %}
+{% block content %}
+  <div class="container-fluid mt-10">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card mb-4">
+          <div class="card-header">
+            <div class="media flex-wrap w-100 align-items-center">
+              <div class="media-body ml-3">
+              </div>
+              <div class="text-muted small ml-3">
+                <div class="px-4 pt-3">{{post.timestamp}} </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <p>{{post.post_content}}</p>
+          </div>
+          <div class="card-footer d-flex flex-wrap justify-content-between align-items-center px-0 pt-0 pb-3">
+          </div>
+          <button class="btn btn-primary btn-primary" data-target="#reply" data-toggle="modal"
+            role="button">Reply</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% for reply in replies reversed %}
+  <br>
+  <div class="container">
+    <div class="media">
+      <div class="media-body">
+          <h4 class="mt-0">Anonymous said:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span><small
+              style="font-size: 13px;">({{reply.timestamp}})</small></span></h4>
+        <h6>{{reply.reply_content}}</h6>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  <!-- Modal -->
+
+  <div class="modal fade" id="reply" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="/replyforumview/{{post.id}}" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1"></label>
+              <input type="hidden" name="post_id" value="{{post.id}}">
+              <textarea class="form-control" id="desc" name="desc" rows="3"></textarea>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">post reply</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
