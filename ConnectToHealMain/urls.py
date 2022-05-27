@@ -16,6 +16,8 @@ urlpatterns = [
     path('detailAppointment/',views.detailAppointment,name = "ConnectToHeal-detailAppointment"),
     path('myAppointments/', views.myAppointments,name = "ConnectToHeal-myAppointments"),
     path('approveSessions/', views.approveSessions,name = "ConnectToHeal-approveSessions"),
+    path('discussionforumview/',views.discussionforum,name="discussionforumview"),
+    path('replyforumview/<int:myid>' ,views.replyforum,name="replyforumview"),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()

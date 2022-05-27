@@ -70,3 +70,33 @@ def approveSessions(request):
         messages.success(request,"Approved the request")
         return redirect("ConnectToHeal-approveSessions")
     return render(request, "ConnectToHealMain/approveSessions.html",{'sessions':sessions})
+
+def discussionforum(request):
+    if request.user.is_authenticated:
+        if request.method=="POST":   
+            user = request.user
+            content = request.POST.get('content','')
+            post = Post(user1=user,post_content=content)
+            post.save()
+            alert = True
+            return render(request, "ConnectToHealMain/discussionforum.html", {'alert':alert})
+        posts = Post.objects.all()
+        return render(request, "ConnectToHealMain/discussionforum.html", {'posts':posts})
+    else:
+        return redirect('login')
+    
+def replyforum(request,myid):
+    if request.user.is_authenticated:
+        post = Post.objects.filter(id=myid).first()
+        replies = Replie.objects.filter(post=post)
+        if request.method=="POST":
+            user = request.user
+            desc = request.POST.get('desc','')
+            post_id =request.POST.get('post_id','')
+            reply = Replie(user = user, reply_content = desc, post=post)
+            reply.save()
+            alert = True
+            return render(request, "ConnectToHealMain/replyforum.html", {'alert':alert})
+        return render(request, "ConnectToHealMain/replyforum.html", {'post':post, 'replies':replies})
+    else:
+        return redirect('login')
